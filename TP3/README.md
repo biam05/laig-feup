@@ -1,5 +1,6 @@
 # LAIG 2020/2021 - TP3
 
+- Grade: 19.3
 ## Group T06G02
 
 | Name                       | Number    | E-Mail              |

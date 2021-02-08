@@ -22,6 +22,8 @@
   - The scene consists of a camp in a forest, in which tents, logs, and a bonfire are present. There is also a log and a tire serving as seats near the fire and a picnic.
   - [Link to the Scene](https://git.fe.up.pt/laig/laig-2020-2021/t06/laig-t06-g02/-/blob/master/TP1/scenes/LAIG_TP1_XML_T6G02.xml)
 
+- Grade: 19.3
+
 ----
 
 ### [TP2 - Animations with Keyframes, Spritesheets and NURBS]
@@ -34,6 +36,8 @@
 - Scene
   - The scene consists of a camp in a forest, in which tents, logs, and a bonfire are present. There is also a log and a tire serving as seats near the fire and a picnic with food. We added a "welcome" flag and a barrel with water to the scene.
   - [Link to the Scene](https://git.fe.up.pt/laig/laig-2020-2021/t06/laig-t06-g02/-/blob/master/TP2/scenes/LAIG_TP1_XML_T6G02.xml)
+
+- Grade: 19.5
 
 ----
 
@@ -51,3 +55,5 @@
   - [Link to the Scene Room](https://git.fe.up.pt/laig/laig-2020-2021/t06/laig-t06-g02/-/blob/master/TP3/scenes/talpa_living_room.xml)
   - The second one is a boat in the middle of a lake, with some fishes passing by. The game is placed inside the boat.
   - [Link to the Scene Boat](https://git.fe.up.pt/laig/laig-2020-2021/t06/laig-t06-g02/-/blob/master/TP3/scenes/talpa_boat.xml)
+
+- Grade: 19.3
