@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title>Talpa - T6G02</title>
+        <link rel="icon" href="data:,">
+
+        <style>
+            body, html {
+                border: 0;
+                padding: 0;
+                margin: 0;
+                overflow: hidden;
+            }
+
+            canvas {
+                width: 100%;
+                height: 100%;
+            }
+
+            #panel {
+                font-family: Verdana, Geneva, sans-serif;
+                position: absolute;
+                padding: 2em;
+                background-color: rgba(0, 0, 0, 0.4);
+                color: white;
+                width: 200px;
+                text-align: center;
+                min-height: 12em;
+            }
+            
+            #panel h1 {
+                font-size: 1.5em;
+                margin: 0;
+                padding-bottom: 0.5em;
+            }
+            
+            #panel 
+            #score,
+            #info {
+                font-size: 1em;
+            }
+            
+            #panel #information,
+            #time,#player,
+            #next, #turn-time{
+                font-size: 0.8em;
+            }
+            
+            #error {
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <script src="main.js"></script>
+        <div id="panel">
+            <h1>Talpa</h1>
+            <p id="info"></p>
+            <p id="score"></p>
+            <p id="player"></p>
+            <p id="next"></p>
+            <p id="turn-time"></p>
+            <p id="time"></p>
+        </div>
+    </body>
+</html>

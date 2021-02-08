@@ -1,0 +1,1367 @@
+<lsf>
+    <initials>
+        <reference length="2" />
+        <root id="scenario" />
+    </initials>
+
+    <views default="lake">
+        <perspective id="player1Camera" near="0.1" far="500" angle="45">
+            <from x="0" y="20" z="10" />
+            <to x="0" y="-2" z="0" />
+        </perspective>
+        <perspective id="player2Camera" near="0.1" far="500" angle="45">
+            <from x="0" y="20" z="-10" />
+            <to x="0" y="-2" z="0" />
+        </perspective>
+        <perspective id="lake" near="0.1" far="500" angle="45">
+            <from x="0" y="35" z="70" />
+            <to x="0" y="10" z="0" />
+        </perspective>
+        <perspective id="boardCamera" near="0.1" far="500" angle="45">
+            <from x="10" y="20" z="0" />
+            <to x="0" y="-2" z="0" />
+        </perspective>
+    </views>
+
+    <illumination>
+        <ambient    r="0.2" g="0.2" b="0.2" a="1.0" />
+        <background r="0.1" g="0.7" b="1.0" a="1.0" />
+    </illumination>
+
+    <lights>
+        <light id="underwater red">
+            <enable value="1" />
+            <position x="50"  y="-20" z="0"   w="1.0" />
+            <ambient  r="0.0" g="0.0" b="0.0" a="1.0" />
+            <diffuse  r="0.8" g="0.8" b="0.8" a="1.0" />
+            <specular r="1.0" g="1.0" b="1.0" a="1.0" />
+        </light>
+        <light id="behind red">
+            <enable value="1" />
+            <position x="50"  y="50"  z="0"   w="1.0" />
+            <ambient  r="0.0" g="0.0" b="0.0" a="1.0" />
+            <diffuse  r="0.4" g="0.4" b="0.4" a="1.0" />
+            <specular r="0.8" g="0.8" b="0.8" a="1.0" />
+        </light>
+
+        <light id="underwater blue">
+            <enable value="1" />
+            <position x="-50" y="-20" z="0"   w="1.0" />
+            <ambient  r="0.0" g="0.0" b="0.0" a="1.0" />
+            <diffuse  r="0.8" g="0.8" b="0.8" a="1.0" />
+            <specular r="1.0" g="1.0" b="1.0" a="1.0" />
+        </light>
+        <light id="behind blue">
+            <enable value="1" />
+            <position x="-50" y="50"  z="0"   w="1.0" />
+            <ambient  r="0.0" g="0.0" b="0.0" a="1.0" />
+            <diffuse  r="0.4" g="0.4" b="0.4" a="1.0" />
+            <specular r="0.8" g="0.8" b="0.8" a="1.0" />
+        </light>
+
+        <light id="center">
+            <enable value="1" />
+            <position x="0"   y="70"  z="0"   w="1.0" />
+            <ambient  r="0.0" g="0.0" b="0.0" a="1.0" />
+            <diffuse  r="0.2" g="0.2" b="0.2" a="1.0" />
+            <specular r="0.2" g="0.2" b="0.2" a="1.0" />
+        </light>
+    </lights>
+
+    <textures>
+        <texture id="exterior" path="./scenes/images/river/exterior.jpg" />
+        <texture id="interior" path="./scenes/images/river/interior.jpg" />
+        <texture id="lake"     path="./scenes/images/river/lake.png"     />
+        <texture id="buoy"     path="./scenes/images/river/buoy.png"     />
+        <texture id="oar"      path="./scenes/images/river/wood.jpg"     />
+        <texture id="red"      path="./scenes/images/red-chair.jpg"      />
+        <texture id="blue"     path="./scenes/images/blue-chair.jpg"     />
+    </textures>
+
+    <spritesheets>
+        <spritesheet id="river" path="./scenes/images/river/water-spritesheet.png" sizeM="4" sizeN="4" />
+    </spritesheets>
+
+    <materials>
+        <material id="default">
+            <shininess value="30" />
+            <ambient  r="0.0" g="0.0" b="0.0" a="1.0" />
+            <diffuse  r="1.0" g="1.0" b="1.0" a="1.0" />
+            <specular r="1.0" g="1.0" b="1.0" a="1.0" />
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0" />
+        </material>
+        <material id="blue">
+            <shininess value="30" />
+            <ambient  r="0.0" g="0.0" b="0.2" a="1.0" />
+            <diffuse  r="0.0" g="0.0" b="0.6" a="1.0" />
+            <specular r="0.0" g="0.0" b="0.8" a="1.0" />
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0" />
+        </material>
+        <material id="red">
+            <shininess value="10" />
+            <ambient  r="0.2" g="0.0" b="0.0" a="1.0" />
+            <diffuse  r="0.6" g="0.0" b="0.0" a="1.0" />
+            <specular r="0.8" g="0.0" b="0.0" a="1.0" />
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0" />
+        </material>
+        <material id="orange">
+            <shininess value="10" />
+            <ambient  r="0.8" g="0.4" b="0.0" a="1.0" />
+            <diffuse  r="0.6" g="0.3" b="0.0" a="1.0" />
+            <specular r="0.4" g="0.2" b="0.0" a="1.0" />
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0" />
+        </material>
+        <material id="black">
+            <shininess value="30" />
+            <ambient  r="0.0" g="0.0" b="0.0" a="1.0" />
+            <diffuse  r="0.0" g="0.0" b="0.0" a="1.0" />
+            <specular r="0.0" g="0.0" b="0.0" a="1.0" />
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0" />
+        </material>
+        <material id="metal">
+            <shininess value="10" />
+            <ambient  r="0.5" g="0.5" b="0.5" a="1.0" />
+            <diffuse  r="0.2" g="0.2" b="0.2" a="1.0" />
+            <specular r="0.2" g="0.2" b="0.2" a="1.0" />
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0" />
+        </material>
+        <material id="handle">
+            <shininess value="10" />
+            <ambient  r="0.8" g="0.8" b="0.8" a="1.0" />
+            <diffuse  r="0.6" g="0.6" b="0.6" a="1.0" />
+            <specular r="0.5" g="0.5" b="0.5" a="1.0" />
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0" />
+        </material>
+    </materials>
+
+    <animations>
+        <animation id="paddle1">
+            <keyframe instant="0"> <!-- Paddle in the Water Front -->
+                <translation x="-17" y="0" z="-17" />
+                <rotation axis="x" angle="-40" />
+                <rotation axis="y" angle="-40" />
+                <rotation axis="z" angle="-15" />
+                <scale sx="1" sy="1" sz="1" />
+            </keyframe>
+            <keyframe instant="10"> <!-- Paddle in the - Back -->
+                <translation x="-17" y="0" z="-17" />
+                <rotation axis="x" angle="40" />
+                <rotation axis="y" angle="-40" />
+                <rotation axis="z" angle="-15" />
+                <scale sx="1" sy="1" sz="1" />
+            </keyframe>
+            <keyframe instant="17.5"> <!-- Paddle in the Air Front -->
+                <translation x="-17" y="0" z="-17" />
+                <rotation axis="x" angle="-40" />
+                <rotation axis="y" angle="-55" />
+                <rotation axis="z" angle="-15" />
+                <scale sx="1" sy="1" sz="1" />
+            </keyframe>
+
+            <keyframe instant="20"> <!-- Paddle in the Water Front -->
+                <translation x="-17" y="0" z="-17" />
+                <rotation axis="x" angle="-40" />
+                <rotation axis="y" angle="-40" />
+                <rotation axis="z" angle="-15" />
+                <scale sx="1" sy="1" sz="1" />
+            </keyframe>
+            <keyframe instant="30"> <!-- Paddle in the - Back -->
+                <translation x="-17" y="0" z="-17" />
+                <rotation axis="x" angle="40" />
+                <rotation axis="y" angle="-40" />
+                <rotation axis="z" angle="-15" />
+                <scale sx="1" sy="1" sz="1" />
+            </keyframe>
+            <keyframe instant="37.5"> <!-- Paddle in the Air Front -->
+                <translation x="-17" y="0" z="-17" />
+                <rotation axis="x" angle="-35" />
+                <rotation axis="y" angle="-55" />
+                <rotation axis="z" angle="-15" />
+                <scale sx="1" sy="1" sz="1" />
+            </keyframe>
+
+            <keyframe instant="40"> <!-- Paddle in the Water Front -->
+                <translation x="-17" y="0" z="-17" />
+                <rotation axis="x" angle="-40" />
+                <rotation axis="y" angle="-40" />
+                <rotation axis="z" angle="-15" />
+                <scale sx="1" sy="1" sz="1" />
+            </keyframe>
+            <keyframe instant="50"> <!-- Paddle in the - Back -->
+                <translation x="-17" y="0" z="-17" />
+                <rotation axis="x" angle="40" />
+                <rotation axis="y" angle="-40" />
+                <rotation axis="z" angle="-15" />
+                <scale sx="1" sy="1" sz="1" />
+            </keyframe>
+            <keyframe instant="57.5"> <!-- Paddle in the Air Front -->
+                <translation x="-17" y="0" z="-17" />
+                <rotation axis="x" angle="-35" />
+                <rotation axis="y" angle="-55" />
+                <rotation axis="z" angle="-15" />
+                <scale sx="1" sy="1" sz="1" />
+            </keyframe>
+
+            <keyframe instant="60"> <!-- Paddle in the Water Front -->
+                <translation x="-17" y="0" z="-17" />
+                <rotation axis="x" angle="-40" />
+                <rotation axis="y" angle="-40" />
+                <rotation axis="z" angle="-15" />
+                <scale sx="1" sy="1" sz="1" />
+            </keyframe>
+            <keyframe instant="70"> <!-- Paddle in the - Back -->
+                <translation x="-17" y="0" z="-17" />
+                <rotation axis="x" angle="40" />
+                <rotation axis="y" angle="-40" />
+                <rotation axis="z" angle="-15" />
+                <scale sx="1" sy="1" sz="1" />
+            </keyframe>
+            <keyframe instant="77.5"> <!-- Paddle in the Air Front -->
+                <translation x="-17" y="0" z="-17" />
+                <rotation axis="x" angle="-35" />
+                <rotation axis="y" angle="-55" />
+                <rotation axis="z" angle="-15" />
+                <scale sx="1" sy="1" sz="1" />
+            </keyframe>
+
+            <keyframe instant="80"> <!-- Paddle in the Water Front -->
+                <translation x="-17" y="0" z="-17" />
+                <rotation axis="x" angle="-40" />
+                <rotation axis="y" angle="-40" />
+                <rotation axis="z" angle="-15" />
+                <scale sx="1" sy="1" sz="1" />
+            </keyframe>
+            <keyframe instant="90"> <!-- Paddle in the - Back -->
+                <translation x="-17" y="0" z="-17" />
+                <rotation axis="x" angle="40" />
+                <rotation axis="y" angle="-40" />
+                <rotation axis="z" angle="-15" />
+                <scale sx="1" sy="1" sz="1" />
+            </keyframe>
+            <keyframe instant="97.5"> <!-- Paddle in the Air Front -->
+                <translation x="-17" y="0" z="-17" />
+                <rotation axis="x" angle="-35" />
+                <rotation axis="y" angle="-55" />
+                <rotation axis="z" angle="-15" />
+                <scale sx="1" sy="1" sz="1" />
+            </keyframe>
+        
+            <keyframe instant="100"> <!-- Paddle in the Water Front -->
+                <translation x="-17" y="0" z="-17" />
+                <rotation axis="x" angle="-40" />
+                <rotation axis="y" angle="-40" />
+                <rotation axis="z" angle="-15" />
+                <scale sx="1" sy="1" sz="1" />
+            </keyframe>
+            <keyframe instant="110"> <!-- Paddle in the - Back -->
+                <translation x="-17" y="0" z="-17" />
+                <rotation axis="x" angle="40" />
+                <rotation axis="y" angle="-40" />
+                <rotation axis="z" angle="-15" />
+                <scale sx="1" sy="1" sz="1" />
+            </keyframe>
+        </animation>
+
+        <animation id="paddle2">
+            <keyframe instant="0"> <!-- Paddle in the Water Front -->
+                <translation x="17" y="0" z="-17" />
+                <rotation axis="x" angle="-40" />
+                <rotation axis="y" angle="40" />
+                <rotation axis="z" angle="-25" />
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="10"> <!-- Paddle in the - Back -->
+                <translation x="17" y="0" z="-17" />
+                <rotation axis="x" angle="40" />
+                <rotation axis="y" angle="40" />
+                <rotation axis="z" angle="-25" />
+                <scale sx="1" sy="1" sz="1" />
+            </keyframe>
+            <keyframe instant="17.5"> <!-- Paddle in the Air Front -->
+                <translation x="17" y="0" z="-17" />
+                <rotation axis="x" angle="-35" />
+                <rotation axis="y" angle="55" />
+                <rotation axis="z" angle="-25" />
+                <scale sx="1" sy="1" sz="1" />
+            </keyframe>
+
+            <keyframe instant="20"> <!-- Paddle in the Water Front -->
+                <translation x="17" y="0" z="-17" />
+                <rotation axis="x" angle="-40" />
+                <rotation axis="y" angle="40" />
+                <rotation axis="z" angle="-25" />
+                <scale sx="1" sy="1" sz="1" />
+            </keyframe>
+            <keyframe instant="30"> <!-- Paddle in the - Back -->
+                <translation x="17" y="0" z="-17" />
+                <rotation axis="x" angle="40" />
+                <rotation axis="y" angle="40" />
+                <rotation axis="z" angle="-25" />
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="37.5"> <!-- Paddle in the Air Front -->
+                <translation x="17" y="0" z="-17" />
+                <rotation axis="x" angle="-35" />
+                <rotation axis="y" angle="55" />
+                <rotation axis="z" angle="-25" />
+                <scale sx="1" sy="1" sz="1" />
+            </keyframe>
+
+            <keyframe instant="40"> <!-- Paddle in the Water Front -->
+                <translation x="17" y="0" z="-17" />
+                <rotation axis="x" angle="-40" />
+                <rotation axis="y" angle="40" />
+                <rotation axis="z" angle="-25" />
+                <scale sx="1" sy="1" sz="1" />
+            </keyframe>
+            <keyframe instant="50"> <!-- Paddle in the - Back -->
+                <translation x="17" y="0" z="-17" />
+                <rotation axis="x" angle="40" />
+                <rotation axis="y" angle="40" />
+                <rotation axis="z" angle="-25" />
+                <scale sx="1" sy="1" sz="1" />
+            </keyframe>
+            <keyframe instant="57.5"> <!-- Paddle in the Air Front -->
+                <translation x="17" y="0" z="-17" />
+                <rotation axis="x" angle="-35" />
+                <rotation axis="y" angle="55" />
+                <rotation axis="z" angle="-25" />
+                <scale sx="1" sy="1" sz="1" />
+            </keyframe>
+
+            <keyframe instant="60"> <!-- Paddle in the Water Front -->
+                <translation x="17" y="0" z="-17" />
+                <rotation axis="x" angle="-40" />
+                <rotation axis="y" angle="40" />
+                <rotation axis="z" angle="-25" />
+                <scale sx="1" sy="1" sz="1" />
+            </keyframe>
+            <keyframe instant="70"> <!-- Paddle in the - Back -->
+                <translation x="17" y="0" z="-17" />
+                <rotation axis="x" angle="40" />
+                <rotation axis="y" angle="40" />
+                <rotation axis="z" angle="-25" />
+                <scale sx="1" sy="1" sz="1" />
+            </keyframe>
+            <keyframe instant="77.5"> <!-- Paddle in the Air Front -->
+                <translation x="17" y="0" z="-17" />
+                <rotation axis="x" angle="-35" />
+                <rotation axis="y" angle="55" />
+                <rotation axis="z" angle="-25" />
+                <scale sx="1" sy="1" sz="1" />
+            </keyframe>
+
+            <keyframe instant="80"> <!-- Paddle in the Water Front -->
+                <translation x="17" y="0" z="-17" />
+                <rotation axis="x" angle="-40" />
+                <rotation axis="y" angle="40" />
+                <rotation axis="z" angle="-25" />
+                <scale sx="1" sy="1" sz="1" />
+            </keyframe>
+            <keyframe instant="90"> <!-- Paddle in the - Back -->
+                <translation x="17" y="0" z="-17" />
+                <rotation axis="x" angle="40" />
+                <rotation axis="y" angle="40" />
+                <rotation axis="z" angle="-25" />
+                <scale sx="1" sy="1" sz="1" />
+            </keyframe>
+            <keyframe instant="97.5"> <!-- Paddle in the Air Front -->
+                <translation x="17" y="0" z="-17" />
+                <rotation axis="x" angle="-35" />
+                <rotation axis="y" angle="55" />
+                <rotation axis="z" angle="-25" />
+                <scale sx="1" sy="1" sz="1" />
+            </keyframe>
+        
+            <keyframe instant="100"> <!-- Paddle in the Water Front -->
+                <translation x="17" y="0" z="-17" />
+                <rotation axis="x" angle="-40" />
+                <rotation axis="y" angle="40" />
+                <rotation axis="z" angle="-25" />
+                <scale sx="1" sy="1" sz="1" />
+            </keyframe>
+            <keyframe instant="110"> <!-- Paddle in the - Back -->
+                <translation x="17" y="0" z="-17" />
+                <rotation axis="x" angle="40" />
+                <rotation axis="y" angle="40" />
+                <rotation axis="z" angle="-25" />
+                <scale sx="1" sy="1" sz="1" />
+            </keyframe>
+        </animation>
+
+        <animation id="fishy">
+            <keyframe instant="10">
+                <translation x="0" y="-2" z="-90" />
+                <rotation axis="x" angle="-120" />
+                <rotation axis="y" angle="0" />
+                <rotation axis="z" angle="0" />
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="14">
+                <translation x="0" y="0" z="-70" />
+                <rotation axis="x" angle="-60" />
+                <rotation axis="y" angle="0" />
+                <rotation axis="z" angle="0" />
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="18">
+                <translation x="0" y="0" z="-50" />
+                <rotation axis="x" angle="-120" />
+                <rotation axis="y" angle="0" />
+                <rotation axis="z" angle="0" />
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="22">
+                <translation x="0" y="0" z="-30" />
+                <rotation axis="x" angle="-60" />
+                <rotation axis="y" angle="0" />
+                <rotation axis="z" angle="0" />
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="26">
+                <translation x="0" y="0" z="-10" />
+                <rotation axis="x" angle="-120" />
+                <rotation axis="y" angle="0" />
+                <rotation axis="z" angle="0" />
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="30">
+                <translation x="0" y="0" z="10" />
+                <rotation axis="x" angle="-60" />
+                <rotation axis="y" angle="0" />
+                <rotation axis="z" angle="0" />
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="34">
+                <translation x="0" y="-2" z="30" />
+                <rotation axis="x" angle="-120" />
+                <rotation axis="y" angle="0" />
+                <rotation axis="z" angle="0" />
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="38">
+                <translation x="0" y="-2" z="50" />
+                <rotation axis="x" angle="-60" />
+                <rotation axis="y" angle="0" />
+                <rotation axis="z" angle="0" />
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="42">
+                <translation x="0" y="-2" z="70" />
+                <rotation axis="x" angle="-120" />
+                <rotation axis="y" angle="0" />
+                <rotation axis="z" angle="0" />
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="46">
+                <translation x="0" y="-2" z="90" />
+                <rotation axis="x" angle="-60" />
+                <rotation axis="y" angle="0" />
+                <rotation axis="z" angle="0" />
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+        </animation>
+    </animations>
+
+    <nodes>
+
+        <node id="scenario">
+            <material id="default" />
+            <texture id="null">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="surroundings" />
+                <noderef id="river" />
+                <noderef id="canoe" />
+                <noderef id="fishes" />
+                <noderef id="box"/>
+            </descendants>
+        </node>
+
+        <node id="surroundings">
+            <material id="default" />
+            <texture id="lake">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+                <translation x="0" y="-15" z="0" />
+                <rotation axis="y" angle="150" />
+                <rotation axis="x" angle="90" />
+            </transformations>
+
+            <descendants>
+                <leaf type="sphere" radius="-100" slices="32" stacks="32" />
+            </descendants>
+        </node>
+
+        <node id="river">
+            <material id="default" />
+            <texture id="null">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+                <translation x="0" y="-15" z="0" />
+                <scale sx="200" sy="200" sz="200" />
+                <rotation axis="x" angle="-90" />
+            </transformations>
+
+            <descendants>
+                <leaf type="spriteanim" ssid="river" startCell="1" endCell="16" duration="2" />
+            </descendants>
+        </node>
+
+        <node id="canoe">
+            <material id="default" />
+            <texture id="null">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+                <translation x="0" y="-15" z="0" />
+            </transformations>
+
+            <descendants>
+                <noderef id="outside-canoe" />
+                <noderef id="inside-canoe" />
+                <noderef id="sticks" />
+                <noderef id="board" />
+                <noderef id="blue-seat" />
+                <noderef id="red-seat" />
+                <noderef id="buoys" />
+                <noderef id="paddles" />
+            </descendants>
+        </node>
+
+        <node id="outside-canoe">
+            <material id="default" />
+            <texture id="exterior">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+                <rotation axis="y" angle="90" />
+            </transformations>
+
+            <descendants>
+                <noderef id="outside1" />
+                <noderef id="outside2" />
+            </descendants>
+        </node>
+
+        <node id="outside1">
+            <material id="null" />
+            <texture id="null">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+            </transformations>
+
+            <descendants>
+                <noderef id="outside" />
+            </descendants>
+        </node>
+
+        <node id="outside2">
+            <material id="null" />
+            <texture id="null">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+                <rotation axis="y" angle="180" />
+            </transformations>
+
+            <descendants>
+                <noderef id="outside" />
+            </descendants>
+        </node>
+
+        <node id="outside">
+            <material id="null" />
+            <texture id="null">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="-12" />
+                <rotation axis="x" angle="-90" />
+            </transformations>
+
+            <descendants>
+                <leaf type="patch" npointsU="5" npointsV="4" npartsU="20" npartsV="20" >                
+                    <controlpoint x="-30" y="-12" z="0" />
+                    <controlpoint x="-15" y="-12" z="0" />
+                    <controlpoint x="+15" y="-12" z="0" />
+                    <controlpoint x="+30" y="-12" z="0" />
+
+                    <controlpoint x="-30" y="-12" z="2" />
+                    <controlpoint x="-15" y="0"   z="2" />
+                    <controlpoint x="+15" y="0"   z="2" />
+                    <controlpoint x="+30" y="-12" z="2" />
+
+                    <controlpoint x="-30" y="-12" z="8" />
+                    <controlpoint x="-15" y="+8"  z="8" />
+                    <controlpoint x="+15" y="+8"  z="8" />
+                    <controlpoint x="+30" y="-12" z="8" />
+
+                    <controlpoint x="-30" y="-12" z="12" />
+                    <controlpoint x="-15" y="+12" z="12" />
+                    <controlpoint x="+15" y="+12" z="12" />
+                    <controlpoint x="+30" y="-12" z="12" />
+                    
+                    <controlpoint x="-30" y="-12" z="16" />
+                    <controlpoint x="-15" y="+14" z="16" />
+                    <controlpoint x="+15" y="+14" z="16" />
+                    <controlpoint x="+30" y="-12" z="16" />
+                </leaf>
+            </descendants>
+        </node>
+
+        <node id="inside-canoe">
+            <material id="default" />
+            <texture id="interior">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+                <rotation axis="y" angle="90" />
+            </transformations>
+
+            <descendants>
+                <noderef id="inside1" />
+                <noderef id="inside2" />
+            </descendants>
+        </node>
+
+        <node id="inside1">
+            <material id="null" />
+            <texture id="null">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+            </transformations>
+
+            <descendants>
+                <noderef id="inside" />
+            </descendants>
+        </node>
+
+        <node id="inside2">
+            <material id="null" />
+            <texture id="null">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+                <rotation axis="y" angle="180" />
+            </transformations>
+
+            <descendants>
+                <noderef id="inside" />
+            </descendants>
+        </node>
+
+        <node id="inside">
+            <material id="null" />
+            <texture id="null">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="-12" />
+                <rotation axis="x" angle="-90" />
+            </transformations>
+
+            <descendants>
+                <leaf type="patch" npointsU="5" npointsV="4" npartsU="20" npartsV="20" >
+                    <controlpoint x="-30" y="-12" z="16" />
+                    <controlpoint x="-15" y="+14" z="16" />
+                    <controlpoint x="+15" y="+14" z="16" />
+                    <controlpoint x="+30" y="-12" z="16" />
+
+                    <controlpoint x="-30" y="-12" z="12" />
+                    <controlpoint x="-15" y="+12" z="12" />
+                    <controlpoint x="+15" y="+12" z="12" />
+                    <controlpoint x="+30" y="-12" z="12" />
+
+                    <controlpoint x="-30" y="-12" z="8" />
+                    <controlpoint x="-15" y="+8"  z="8" />
+                    <controlpoint x="+15" y="+8"  z="8" />
+                    <controlpoint x="+30" y="-12" z="8" />
+
+                    <controlpoint x="-30" y="-12" z="2" />
+                    <controlpoint x="-15" y="0"   z="2" />
+                    <controlpoint x="+15" y="0"   z="2" />
+                    <controlpoint x="+30" y="-12" z="2" />
+
+                    <controlpoint x="-30" y="-12" z="0" />
+                    <controlpoint x="-15" y="-12" z="0" />
+                    <controlpoint x="+15" y="-12" z="0" />
+                    <controlpoint x="+30" y="-12" z="0" />
+                </leaf>
+            </descendants>
+        </node>
+
+        <node id="blue-seat">
+            <material id="default" />
+            <texture id="blue">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+                <scale sx="3" sy="1" sz="1" />
+                <translation x="0" y="8" z="-12" />
+                <rotation axis="x" angle="-90" />
+                <rotation axis="z" angle="45" />
+            </transformations>
+
+            <descendants>
+                <leaf type="cylinder" height="1" topRadius="5" bottomRadius="4" stacks="4" slices="4" />
+            </descendants>
+        </node>
+
+        <node id="red-seat">
+            <material id="default" />
+            <texture id="red">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+                <scale sx="3" sy="1" sz="1" />
+                <translation x="0" y="8" z="12" />
+                <rotation axis="x" angle="-90" />
+                <rotation axis="z" angle="45" />
+            </transformations>
+
+            <descendants>
+                <leaf type="cylinder" height="1" topRadius="5" bottomRadius="4" stacks="4" slices="4" />
+            </descendants>
+        </node>
+
+        <node id="board">
+            <material id="default" />
+            <texture id="interior">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+            </transformations>
+
+            <descendants>
+                <noderef id="board-seat" />
+                <noderef id="borders" />
+            </descendants>
+        </node>
+
+        <node id="board-seat">
+            <material id="default" />
+            <texture id="interior">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+                <scale sx="2.5" sy="1" sz="1" />
+                <translation x="0" y="13.98" z="0" />
+                <rotation axis="x" angle="-90" />
+                <rotation axis="z" angle="45" />
+            </transformations>
+
+            <descendants>
+                <leaf type="cylinder" height="1" topRadius="8" bottomRadius="7" stacks="4" slices="4" />
+            </descendants>
+        </node>
+
+        <node id="borders">  
+            <material id="null" />
+            <texture id="null">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+                <translation x="0" y="14.99" z="0" />
+                <rotation axis="y" angle="90" />
+            </transformations>
+
+            <descendants>
+                <noderef id="red-top" />
+                <noderef id="red-bottom" />
+                <noderef id="blue-left" />
+                <noderef id="blue-right" />
+            </descendants>
+        </node>
+
+        <node id="red-top">
+            <material id="red" />
+            <texture id="null">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+                <translation x="0" y="-0.0005" z="0" />
+                <rotation axis="x" angle="-90" />
+                <rotation axis="z" angle="135" />
+            </transformations>
+
+            <descendants>
+                <leaf type="triangle" x1="-7.5" y1="0" x2="0" y2="7.5" x3="0" y3="0" />
+            </descendants>
+        </node>
+
+        <node id="red-bottom">
+            <material id="red" />
+            <texture id="null">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+                <translation x="0" y="-0.0005" z="0" />
+                <rotation axis="x" angle="-90" />
+                <rotation axis="z" angle="-45" />
+            </transformations>
+
+            <descendants>
+                <leaf type="triangle" x1="-7.5" y1="0" x2="0" y2="7.5" x3="0" y3="0" />
+            </descendants>
+        </node>
+
+        <node id="blue-left">
+            <material id="blue" />
+            <texture id="null">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+                <translation x="0" y="-0.0005" z="0" />
+                <rotation axis="x" angle="-90" />
+                <rotation axis="z" angle="45" />
+            </transformations>
+
+            <descendants>
+                <leaf type="triangle" x1="-7.5" y1="0" x2="0" y2="7.5" x3="0" y3="0" />
+            </descendants>
+        </node>
+
+        <node id="blue-right">
+            <material id="blue" />
+            <texture id="null">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+                <translation x="0" y="-0.0005" z="0" />
+                <rotation axis="x" angle="-90" />
+                <rotation axis="z" angle="-135" />
+            </transformations>
+
+            <descendants>
+                <leaf type="triangle" x1="-7.5" y1="0" x2="0" y2="7.5" x3="0" y3="0" />
+            </descendants>
+        </node>
+
+        <node id="sticks">
+            <material id="default" />
+            <texture id="null">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+            </transformations>
+
+            <descendants>
+                <noderef id="stick1" />
+                <noderef id="stick2" />
+                <noderef id="stick3" />
+                <noderef id="stick4" />
+                <noderef id="stick5" />
+                <noderef id="stick6" />
+            </descendants>
+        </node>
+
+        <node id="stick1">
+            <material id="default" />
+            <texture id="null">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="-14" />
+            </transformations>
+
+            <descendants>
+                <noderef id="small-stick" />
+            </descendants>
+        </node>
+
+        <node id="stick2">
+            <material id="default" />
+            <texture id="null">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="-10" />
+            </transformations>
+
+            <descendants>
+                <noderef id="large-stick" />
+            </descendants>
+        </node>
+
+        <node id="stick3">
+            <material id="default" />
+            <texture id="null">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="14" />
+            </transformations>
+
+            <descendants>
+                <noderef id="small-stick" />
+            </descendants>
+        </node>
+
+        <node id="stick4">
+            <material id="default" />
+            <texture id="null">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="10" />
+            </transformations>
+
+            <descendants>
+                <noderef id="large-stick" />
+            </descendants>
+        </node>
+
+        <node id="stick5">
+            <material id="default" />
+            <texture id="null">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="-4" />
+            </transformations>
+
+            <descendants>
+                <noderef id="stick" />
+            </descendants>
+        </node>
+
+        <node id="stick6">
+            <material id="default" />
+            <texture id="null">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="4" />
+            </transformations>
+
+            <descendants>
+                <noderef id="stick" />
+            </descendants>
+        </node>
+
+        <node id="small-stick">
+            <material id="default" />
+            <texture id="interior">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+                <translation x="-11.9" y="8.2" z="0" />
+                <rotation axis="y" angle="90" />
+            </transformations>
+
+            <descendants>
+                <leaf type="cylinder" height="23.8" topRadius="0.5" bottomRadius="0.5" stacks="16" slices="16" />
+            </descendants>
+        </node>
+
+        <node id="large-stick">
+            <material id="default" />
+            <texture id="interior">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+                <translation x="-13" y="8.2" z="0" />
+                <rotation axis="y" angle="90" />
+            </transformations>
+
+            <descendants>
+                <leaf type="cylinder" height="26" topRadius="0.5" bottomRadius="0.5" stacks="16" slices="16" />
+            </descendants>
+        </node>
+
+        <node id="stick">
+            <material id="default" />
+            <texture id="interior">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+                <translation x="-18.3" y="14.2" z="0" />
+                <rotation axis="y" angle="90" />
+            </transformations>
+
+            <descendants>
+                <leaf type="cylinder" height="36.6" topRadius="0.5" bottomRadius="0.5" stacks="16" slices="16" />
+            </descendants>
+        </node>
+
+        <node id="buoys">
+            <material id="default" />
+            <texture id="null">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+            </transformations>
+
+            <descendants>
+                <noderef id="buoy1" />
+                <noderef id="buoy2" />
+                <noderef id="buoy3" />
+                <noderef id="buoy4" />
+            </descendants>
+        </node>
+
+        <node id="buoy1">
+            <material id="default" />
+            <texture id="null">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+                <translation x="-14" y="8" z="-12" />
+                <rotation axis="z" angle="38" />
+                <rotation axis="y" angle="-16" />
+            </transformations>
+
+            <descendants>
+                <noderef id="buoy" />
+            </descendants>
+        </node>
+
+        <node id="buoy2">
+            <material id="default" />
+            <texture id="null">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+                <translation x="14" y="8" z="-12" />
+                <rotation axis="z" angle="-38" />
+                <rotation axis="y" angle="16" />
+            </transformations>
+
+            <descendants>
+                <noderef id="buoy" />
+            </descendants>
+        </node>
+
+        <node id="buoy3">
+            <material id="default" />
+            <texture id="null">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+                <translation x="-14" y="8" z="12" />
+                <rotation axis="z" angle="38" />
+                <rotation axis="y" angle="16" />
+            </transformations>
+
+            <descendants>
+                <noderef id="buoy" />
+            </descendants>
+        </node>
+
+        <node id="buoy4">
+            <material id="default" />
+            <texture id="null">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+                <translation x="14" y="8" z="12" />
+                <rotation axis="z" angle="-38" />
+                <rotation axis="y" angle="-16" />
+            </transformations>
+
+            <descendants>
+                <noderef id="buoy" />
+            </descendants>
+        </node>
+
+        <node id="buoy">
+            <material id="default" />
+            <texture id="buoy">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+                <rotation axis="y" angle="90" />
+            </transformations>
+
+            <descendants>
+                <leaf type="torus" inner="1.3" outer="4" slices="32" loops="32" />
+            </descendants>
+        </node>
+
+        <node id="paddles">
+            <material id="default" />
+            <texture id="interior">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+            </transformations>
+
+            <descendants>
+                <noderef id="paddle1" />
+                <noderef id="paddle2" />
+            </descendants>
+        </node>
+
+        <node id="paddle1">
+            <material id="default" />
+            <texture id="interior">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+                <rotation axis="x" angle="90" />
+            </transformations>
+
+            <animationref id="paddle1" />
+
+            <descendants>
+                <noderef id="paddle" />
+            </descendants>
+        </node>
+
+        <node id="paddle2">
+            <material id="default" />
+            <texture id="interior">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+                <rotation axis="x" angle="90" />
+            </transformations>
+
+            <animationref id="paddle2" />
+
+            <descendants>
+                <noderef id="paddle" />
+            </descendants>
+        </node>
+
+        <node id="paddle">
+            <material id="default" />
+            <texture id="interior">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+            </transformations>
+
+            <descendants>
+                <noderef id="paddle-grip" />
+                <noderef id="paddle-shaft" />
+                <noderef id="paddle-shaft-throat" />
+                <noderef id="paddle-throat" />
+                <noderef id="paddle-blade" />
+            </descendants>
+        </node>
+
+        <node id="paddle-grip">
+            <material id="default" />
+            <texture id="null">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+            </transformations>
+
+            <descendants>
+                <leaf type="cylinder" height="0.5" topRadius="0.4" bottomRadius="1" stacks="2" slices="16" />
+            </descendants>
+        </node>
+
+        <node id="paddle-shaft">
+            <material id="default" />
+            <texture id="null">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="0.5" />
+            </transformations>
+
+            <descendants>
+                <leaf type="cylinder" height="13.5" topRadius="0.4" bottomRadius="0.4" stacks="16" slices="16" />
+            </descendants>
+        </node>
+
+        <node id="paddle-shaft-throat">
+            <material id="default" />
+            <texture id="null">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="14" />
+            </transformations>
+
+            <descendants>
+                <leaf type="cylinder" height="1" topRadius="0.2" bottomRadius="0.4" stacks="4" slices="16" />
+            </descendants>
+        </node>
+
+        <node id="paddle-throat">
+            <material id="default" />
+            <texture id="null">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="14" />
+                <scale sx="1" sy="0.25" sz="1" />
+                <rotation axis="z" angle="45" />
+            </transformations>
+
+            <descendants>
+                <leaf type="cylinder" height="1.5" topRadius="2" bottomRadius="0.4" stacks="4" slices="4" />
+            </descendants>
+        </node>
+
+        <node id="paddle-blade">
+            <material id="default" />
+            <texture id="null">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="15.5" />
+                <scale sx="1" sy="0.25" sz="1" />
+                <rotation axis="z" angle="45" />
+            </transformations>
+
+            <descendants>
+                <leaf type="cylinder" height="8" topRadius="2" bottomRadius="2" stacks="12" slices="4" />
+            </descendants>
+        </node>
+
+        <node id="fishes">
+            <material id="default" />
+            <texture id="null">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+                <translation x="0" y="-17" z="0" />
+            </transformations>
+
+            <descendants>
+                <noderef id="fish1" />
+                <noderef id="fish2" />
+                <noderef id="fish3" />
+                <noderef id="fish4" />
+            </descendants>
+        </node>
+
+        <node id="fish1">
+            <material id="orange" />
+            <texture id="null">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+                <translation x="-43" y="0" z="0" />
+            </transformations>
+
+            <animationref id="fishy" />
+
+            <descendants>
+                <leaf type="obj" url="models/fish.obj" />
+            </descendants>
+        </node>
+
+        <node id="fish2">
+            <material id="orange" />
+            <texture id="null">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+                <translation x="-52" y="0" z="-4" />
+            </transformations>
+
+            <animationref id="fishy" />
+
+            <descendants>
+                <leaf type="obj" url="models/fish.obj" />
+            </descendants>
+        </node>
+
+        <node id="fish3">
+            <material id="orange" />
+            <texture id="null">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+                <translation x="-60" y="0" z="5" />
+            </transformations>
+
+            <animationref id="fishy" />
+
+            <descendants>
+                <leaf type="obj" url="models/fish.obj" />
+            </descendants>
+        </node>
+
+        <node id="fish4">
+            <material id="orange" />
+            <texture id="null">
+                <amplification afs="1" aft="1" />
+            </texture>
+            <transformations>
+                <translation x="-54" y="0" z="12" />
+            </transformations>
+
+            <animationref id="fishy" />
+
+            <descendants>
+                <leaf type="obj" url="models/fish.obj" />
+            </descendants>
+        </node>
+
+        <node id="box">  
+            <material id="default" />
+            <texture id="null">
+                <amplification afs="10" aft="20" />
+            </texture>
+            <transformations>
+                <translation x="8" y="0" z="0"/>
+                <rotation axis="x" angle="-90"/>                
+                <rotation axis="z" angle="-90"/>
+            </transformations>
+
+            <descendants>
+                <noderef id="box-form"/>
+                <noderef id="box-floor"/>
+                <noderef id="box-handle"/>
+            </descendants>
+        </node>
+
+        <node id="box-form">  
+            <material id="metal" />
+            <texture id="null">
+                <amplification afs="10" aft="20" />
+            </texture>
+            <transformations>
+            </transformations>
+
+            <descendants>
+                <leaf type="defbarrel" base="2" middle="2.5" height="3" slices="32" stacks="32" />
+            </descendants>
+        </node>
+
+        <node id="box-floor">  
+            <material id="black" />
+            <texture id="null">
+                <amplification afs="10" aft="20" />
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="1"/>
+            </transformations>
+
+            <descendants>
+                <leaf type="cylinder" height="1" topRadius="2" bottomRadius="2" stacks="32" slices="32"/>
+            </descendants>
+        </node>
+
+        <node id="box-handle">  
+            <material id="handle" />
+            <texture id="null">
+                <amplification afs="10" aft="20" />
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="2.5"/>
+                <rotation axis="x" angle="-90"/> 
+            </transformations>
+
+            <descendants>
+                <leaf type="torus" inner=".1" outer="2.1" slices="32" loops="32" />>
+            </descendants>
+        </node>
+
+    </nodes>
+</lsf>
