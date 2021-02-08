@@ -1,5 +1,6 @@
 # LAIG 2020/2021
 
+- Final Grade: 19
 ## Group T06G02
 
 | Name                       | Number    | E-Mail              |
